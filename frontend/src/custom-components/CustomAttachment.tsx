@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import type { ChannelFilters, ChannelSort, StreamChat } from "stream-chat";
 
-import { Attachment, type AttachmentProps } from "stream-chat-react";
+import { Attachment, AttachmentProps } from "stream-chat-react";
 
 export type CustomAttachmentType = {
   image: string;

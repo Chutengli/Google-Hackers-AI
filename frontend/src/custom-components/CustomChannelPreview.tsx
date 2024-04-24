@@ -14,7 +14,7 @@ export const CustomChannelPreview = (props: ChannelPreviewProps) => {
       <div>
         <img
           src={
-            channel.data.image ??
+            channel?.data?.image ??
             `https://getstream.io/random_png/?name=unknown`
           }
           alt="channel-image"
