@@ -8,52 +8,62 @@ const generationConfig = {
   temperature: 0.9,
   topK: 1,
   topP: 1,
-  maxOutputTokens: 200,
+  maxOutputTokens: 1000,
   response_mime_type: "text/plain",
 };
 
-const prompt = `
-You are a scrum master for the team. Your task is to generate ations types, time and description for team base on the group chat. 
+// text is thw conversation and ticketBoard is the ticketBoard
+async function fetchGenerativeContent(text, ticketBoard) {
+  // Convert ticketBoard into a summarized JSON string for input
+  const ticketSummary = JSON.stringify({ projects: ticketBoard });
 
-Your response must be a JSON object which has the following schema:
+  const prompt = `As a project management master, analyze and summarize the following conversation: ${text}. Given the current ticket progress board: ${ticketSummary}. Keep json format like this "
+  {
+    "task_id": "[null if not mentioned]",
+    "task_content": "[Content]",
+    "status": "[To do/Doing/Done]",
+    "deadline": "[Updated or Confirmed Deadline]",
+    "assignee": "[Member Name if assigned]",
+    "details": "[Details]",
+    "progress": "[Progress Percentage]"
+  }
+  Be sure to match the tasks and projects.`;
 
-* actionTyle: Type of the actions it will perform from three optoins: "Create", "Update", "Delete"
-* time: The time it will take to perform the action
-* descroption: A brief reason for why the user would like this book
-`;
-
-// Fetches generative content from the model, text only.
-async function fetchGenerativeContent(text) {
   try {
-    const parts = [{ text }];
+    // This part is constructed with the complete prompt
+    const parts = [{ text: prompt }]; // Changed to use the constructed prompt
+
+    console.log("Sending to model:", parts); // Verify what is sent to the model
+
     const model = genAI.getGenerativeModel({
       model: "gemini-1.5-pro-latest",
       systemInstruction: {
-        parts: [{ text: prompt }],
+        parts, // parts array now contains the correct prompt
         role: "model",
       },
       generationConfig,
     });
+
     const result = await model.generateContent({
-      contents: [{ role: "user", parts }],
+      contents: [{ role: "user", parts }], // Send the correct parts to the content generation
     });
 
-    if (
-      result.response.promptFeedback &&
-      result.response.promptFeedback.blockReason
-    ) {
+    if (result.response.promptFeedback && result.response.promptFeedback.blockReason) {
       return {
         error: `Blocked for ${result.response.promptFeedback.blockReason}`,
       };
     }
+
     const response = await result.response;
     return response.candidates[0].content.parts[0].text;
   } catch (e) {
+    console.error("Error fetching content:", e);
     return {
       error: e.message,
     };
   }
 }
+
 
 // return the total tokens in the prompt
 async function countTokens(data) {
@@ -63,4 +73,37 @@ async function countTokens(data) {
   return totalTokens;
 }
 
-export { fetchGenerativeContent, countTokens };
+const parseJSONFromText = (text) => {
+  if (typeof text !== 'string') {
+    console.error("Invalid input: Expected a string, received:", typeof text);
+    throw new Error("Input must be a string to parse JSON.");
+  }
+  
+  try {
+    const jsonMatch = text.match(/\{(?:[^{}]|{(?:[^{}]|{[^{}]*})*})*\}/);
+    if (!jsonMatch) {
+      throw new Error("No valid JSON object found in the text.");
+    }
+    return JSON.parse(jsonMatch[0]);
+  } catch (error) {
+    console.error("Error parsing JSON from text:", error);
+    throw new Error("Failed to parse JSON.");
+  }
+};
+
+
+// Usage in the processMessages function to parse the API response
+async function processMessages(messageQueue, ticketBoard) {
+  const combinedText = messageQueue.join(' ');
+  try {
+    const responseData = await fetchGenerativeContent(combinedText, ticketBoard);
+    const parsedData = parseJSONFromText(responseData);
+    return parsedData; // Return the parsed data so it can be sent to the client
+  } catch (error) {
+    console.error("Failed to process or parse messages from API:", error);
+    return { error: error.message };
+  }
+}
+
+
+export { fetchGenerativeContent, countTokens , processMessages };
