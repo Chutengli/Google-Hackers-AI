@@ -1,9 +1,17 @@
 import express from "express";
 import { fetchGenerativeContent, countTokens } from "./services/fetchLLM.js";
+import { ChatClient } from "./services/ChatClient.js";
 
 const app = express();
 app.use(express.json());
-const PORT = 3000;
+const PORT = 3001;
+
+const chatClient = new ChatClient();
+try {
+  await chatClient.connect();
+} catch (error) {
+  console.error(error);
+}
 
 app.post("/fetch-content", async (req, res) => {
   // get the chat data from the request

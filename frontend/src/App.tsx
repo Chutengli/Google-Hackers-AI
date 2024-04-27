@@ -1,10 +1,5 @@
 import { useEffect } from "react";
-import type {
-  ChannelFilters,
-  ChannelSort,
-  ChannelOptions,
-  User,
-} from "stream-chat";
+import { ChannelFilters, ChannelSort, ChannelOptions, User } from "stream-chat";
 import {
   useCreateChatClient,
   Chat,
@@ -28,12 +23,11 @@ import { CustomMessage } from "./custom-components/CustomMessage";
 import { CustomChannelPreview } from "./custom-components/CustomChannelPreview";
 import { CustomAttachment } from "./custom-components/CustomAttachment";
 
-const apiKey = "t442dfkucxcj";
-const userId = "little-wood-9";
-const userName = "Little Wood";
-const userToken =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoibGl0dGxlLXdvb2QtOSJ9.CqE75Jdcw_Gv2CySKWsgkGd2ECVe7dR3_Knxap5mlZg";
+const apiKey = process.env.REACT_APP_API_KEY as string;
 
+const userId = process.env.REACT_APP_USER_ID as string;
+const userName = process.env.REACT_APP_USER_NAME as string;
+const userToken = process.env.REACT_APP_USER_TOKEN;
 const user: User = {
   id: userId,
   name: userName,
