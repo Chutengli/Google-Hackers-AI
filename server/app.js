@@ -13,6 +13,12 @@ try {
   console.error(error);
 }
 
+// TODO: /command function
+// TODO: /Gemni API return action, programmatically chatbot send message
+chatClient.watch();
+
+// TODO: util create channel with conversation & user
+
 app.post("/fetch-content", async (req, res) => {
   // get the chat data from the request
   const { chatData } = req.body;
