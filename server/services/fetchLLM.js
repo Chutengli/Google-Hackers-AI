@@ -17,17 +17,20 @@ async function fetchGenerativeContent(text, ticketBoard) {
   // Convert ticketBoard into a summarized JSON string for input
   const ticketSummary = JSON.stringify({ projects: ticketBoard });
 
-  const prompt = `As a project management master, analyze and summarize the following conversation: ${text}. Given the current ticket progress board: ${ticketSummary}. Keep json format like this "
-  {
-    "task_id": "[null if not mentioned]",
-    "task_content": "[Content]",
-    "status": "[To do/Doing/Done]",
-    "deadline": "[Updated or Confirmed Deadline]",
-    "assignee": "[Member Name if assigned]",
-    "details": "[Details]",
-    "progress": "[Progress Percentage]"
-  }
-  Be sure to match the tasks and projects.`;
+  const prompt = `As a project management master, update the ticket progress board: ${ticketSummary} by analyzing and summarizing the following conversation: ${text}. Keep JSON format like this "
+  [
+    {
+      "task_id": "[null if not mentioned]",
+      "task_content": "[Content]",
+      "status": "[To do/Doing/Done]",
+      "deadline": "[Updated or Confirmed Deadline]",
+      "assignee": "[Member Name if assigned]",
+      "details": "[Details]",
+      "progress": "[Progress Percentage]"
+    },...
+  ]
+  "
+  . Be sure to match the tasks and projects.`;
 
   try {
     // This part is constructed with the complete prompt
@@ -55,7 +58,10 @@ async function fetchGenerativeContent(text, ticketBoard) {
     }
 
     const response = await result.response;
-    return response.candidates[0].content.parts[0].text;
+    console.log("Received Response: ", response.candidates[0].content.parts[0].text)
+    const parsedResponse = parseJSONFromText(response.candidates[0].content.parts[0].text);
+    
+    return parsedResponse;
   } catch (e) {
     console.error("Error fetching content:", e);
     return {
@@ -80,7 +86,7 @@ const parseJSONFromText = (text) => {
   }
   
   try {
-    const jsonMatch = text.match(/\{(?:[^{}]|{(?:[^{}]|{[^{}]*})*})*\}/);
+    const jsonMatch = text.match(/\[\s*\{[^[]*?\}\s*\]/);
     if (!jsonMatch) {
       throw new Error("No valid JSON object found in the text.");
     }
@@ -92,18 +98,4 @@ const parseJSONFromText = (text) => {
 };
 
 
-// Usage in the processMessages function to parse the API response
-async function processMessages(messageQueue, ticketBoard) {
-  const combinedText = messageQueue.join(' ');
-  try {
-    const responseData = await fetchGenerativeContent(combinedText, ticketBoard);
-    const parsedData = parseJSONFromText(responseData);
-    return parsedData; // Return the parsed data so it can be sent to the client
-  } catch (error) {
-    console.error("Failed to process or parse messages from API:", error);
-    return { error: error.message };
-  }
-}
-
-
-export { fetchGenerativeContent, countTokens , processMessages };
+export { fetchGenerativeContent, countTokens };

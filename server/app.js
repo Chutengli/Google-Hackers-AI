@@ -15,7 +15,7 @@ try {
 
 // TODO: /command function
 // TODO: /Gemni API return action, programmatically chatbot send message
-chatClient.watch();
+// chatClient.watch();
 
 // TODO: util create channel with conversation & user
 const ticketBoard = [
@@ -72,7 +72,7 @@ app.post("/fetch-content", async (req, res) => {
   // get the chat data from the request
   const { chatData } = req.body;
   try {
-    const data = await fetchGenerativeContent(chatData);
+    const data = await fetchGenerativeContent(chatData, ticketBoard); 
     const tokenCounts = await countTokens(chatData);
     res.json({ data, tokenCounts });
   } catch (error) {
