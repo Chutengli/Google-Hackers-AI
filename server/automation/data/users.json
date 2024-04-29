@@ -1,0 +1,68 @@
+[
+  {
+    "id": "userA",
+    "role": "user",
+    "jobTitle": "Project Manager",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNlckEifQ.DRWFdAdupTNi6z1fV1uULIAFd6cJ2WSBRuLS0b72svk"
+  },
+  {
+    "id": "userB",
+    "role": "user",
+    "jobTitle": "Front-end Developer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNlckIifQ.Gqg10cN8hz4dIbug6jBhecY9FfjwnUx33EZONrUXKOE"
+  },
+  {
+    "id": "userC",
+    "role": "user",
+    "jobTitle": "Back-end Developer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNlckMifQ.vP-Gl3NOxyOIUBE8ptf8kAX8t9_zY085nJ4KUcgUKRM"
+  },
+  {
+    "id": "userD",
+    "role": "user",
+    "jobTitle": "Full stack Developer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNlckQifQ.XJiWq8SlO7SmeBCM9xsdiXG8oHVbLJjJ-hyD7Me9DwA"
+  },
+  {
+    "id": "userE",
+    "role": "user",
+    "jobTitle": "Quality Assurance Engineer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNlckUifQ.BNVabZC8-q_5LLRe3gj946ZFTvlYKtGu7X5FKed02lw"
+  },
+  {
+    "id": "userF",
+    "role": "user",
+    "jobTitle": "UI/UX Designer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNlckYifQ.BOXZ3DkCtt8-9JmdF31pR1gPaKeU4E5QJewNLyzCFsI"
+  },
+  {
+    "id": "granty",
+    "role": "admin",
+    "jobTitle": "DevOps Engineer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZ3JhbnR5In0.Bf-8kjufx0FiTIUfGKVRUG5NnnkM8OGjRUyar7EXWDY"
+  },
+  {
+    "id": "louis",
+    "role": "admin",
+    "jobTitle": "Data Engineer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibG91aXMifQ.QH9eGQ3j-rzwZOLZcT1QItzZzpauvMfEKc6XgwMhmhU"
+  },
+  {
+    "id": "chaohui",
+    "role": "admin",
+    "jobTitle": "UI/UX Designer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiY2hhb2h1aSJ9.vqzkz7AtbfbU1xnNRcc45LAXe9VJwMMCdGhUKhZhjH0"
+  },
+  {
+    "id": "chuteng",
+    "role": "admin",
+    "jobTitle": "Back-end Developer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiY2h1dGVuZyJ9.TRO1Imv8_qqGDGBOuPEysP5VOiLYz_MDWfGjna645eI"
+  },
+  {
+    "id": "ken",
+    "role": "admin",
+    "jobTitle": "UI/UX Designer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoia2VuIn0.lhNBkYRMCoIqXXHTKmyfWA3e6mK35OozsFq5iKEddaM"
+  }
+]

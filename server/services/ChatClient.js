@@ -11,7 +11,9 @@ export class ChatClient {
 
   async connect() {
     if (!process.env.CHAT_APP_USER_ID || !process.env.CHAT_APP_USER_NAME) {
-      console.error("Unable to connect to the Chat server without user info");
+      console.error(
+        "Unable to connect to the Chat server without user info. Please make sure you source the .env file."
+      );
     }
     await this.client.connectUser(
       {

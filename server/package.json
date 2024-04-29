@@ -5,6 +5,7 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
+    "createHistory": "node --env-file=.env ./automation/createHistory.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "userA",
+    "text": "Great to be here. I'm userA"
+  },
+  {
+    "id": "userB",
+    "text": "Hello! I'm userB"
+  },
+  {
+    "id": "userC",
+    "text": "Hi! I'm user C"
+  }
+]
