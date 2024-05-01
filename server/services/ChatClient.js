@@ -24,4 +24,25 @@ export class ChatClient {
       process.env.CHAT_APP_USER_TOKEN
     );
   }
+
+  async watchAllChannels() {
+    const filter = { members: { $in: [process.env.CHAT_APP_USER_ID] } };
+    const options = {
+      watch: true, // Automatically watches all the channels returned by the query
+      state: true, // Get the state of the channel
+    };
+
+    const channels = await this.client.queryChannels(filter, {}, options);
+
+    channels.forEach((channel) => {
+      console.log(
+        `userid: ${process.env.CHAT_APP_USER_ID} Start watching channel ${channel.id}`
+      );
+    });
+
+    this.client.on("message.new", (event) => {
+      // TODO：Feed this into LLM
+      console.log(event);
+    });
+  }
 }
