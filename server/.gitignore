@@ -5,3 +5,6 @@ node_modules
 # google api credentials
 services/googlesheet/credentials.json
 services/googlesheet/token.json
+
+credentials.json
+token.json
