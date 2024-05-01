@@ -1,3 +1,7 @@
 node_modules
 
 .env
+
+# google api credentials
+services/googlesheet/credentials.json
+services/googlesheet/token.json
