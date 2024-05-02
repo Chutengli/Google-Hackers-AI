@@ -51,16 +51,24 @@ async function fetchGenerativeContent(text, ticketBoard) {
       contents: [{ role: "user", parts }], // Send the correct parts to the content generation
     });
 
-    if (result.response.promptFeedback && result.response.promptFeedback.blockReason) {
+    if (
+      result.response.promptFeedback &&
+      result.response.promptFeedback.blockReason
+    ) {
       return {
         error: `Blocked for ${result.response.promptFeedback.blockReason}`,
       };
     }
 
     const response = await result.response;
-    console.log("Received Response: ", response.candidates[0].content.parts[0].text)
-    const parsedResponse = parseJSONFromText(response.candidates[0].content.parts[0].text);
-    
+    console.log(
+      "Received Response: ",
+      response.candidates[0].content.parts[0].text
+    );
+    const parsedResponse = parseJSONFromText(
+      response.candidates[0].content.parts[0].text
+    );
+
     return parsedResponse;
   } catch (e) {
     console.error("Error fetching content:", e);
@@ -69,7 +77,6 @@ async function fetchGenerativeContent(text, ticketBoard) {
     };
   }
 }
-
 
 // return the total tokens in the prompt
 async function countTokens(data) {
@@ -80,11 +87,11 @@ async function countTokens(data) {
 }
 
 const parseJSONFromText = (text) => {
-  if (typeof text !== 'string') {
+  if (typeof text !== "string") {
     console.error("Invalid input: Expected a string, received:", typeof text);
     throw new Error("Input must be a string to parse JSON.");
   }
-  
+
   try {
     const jsonMatch = text.match(/\[\s*\{[^[]*?\}\s*\]/);
     if (!jsonMatch) {
@@ -96,6 +103,5 @@ const parseJSONFromText = (text) => {
     throw new Error("Failed to parse JSON.");
   }
 };
-
 
 export { fetchGenerativeContent, countTokens };

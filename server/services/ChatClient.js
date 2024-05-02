@@ -1,12 +1,23 @@
 import { StreamChat } from "stream-chat";
+import { GeminiService } from "./GeminiService.js";
 
 export class ChatClient {
   client;
+  geminiService;
 
   constructor() {
     this.client = StreamChat.getInstance(process.env.CHAT_API_KEY, {
       allowServerSideConnect: true,
     });
+
+    try {
+      this.geminiService = new GeminiService(
+        process.env.API_KEY,
+        "gemini-1.5-pro-latest"
+      );
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async connect() {
@@ -14,7 +25,9 @@ export class ChatClient {
       console.error(
         "Unable to connect to the Chat server without user info. Please make sure you source the .env file."
       );
+      return;
     }
+
     await this.client.connectUser(
       {
         id: process.env.CHAT_APP_USER_ID,
@@ -40,9 +53,15 @@ export class ChatClient {
       );
     });
 
-    this.client.on("message.new", (event) => {
+    this.client.on("message.new", async (event) => {
       // TODO：Feed this into LLM
-      console.log(event);
+      if (event.user.id !== process.env.CHAT_APP_USER_ID) {
+        console.log("here!");
+        await this.geminiService.handleSendMessage({
+          user: event?.user,
+          message: event?.message,
+        });
+      }
     });
   }
 }

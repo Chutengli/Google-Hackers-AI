@@ -81,11 +81,6 @@ app.post("/fetch-content", async (req, res) => {
   }
 });
 
-app.use("/ping", (req, res) => {
-  res.send("hello world~");
-  console.log("pinged");
-});
-
 app.post("/update", async (req, res) => {
   const { message } = req.body;
   const channel = chatClient.client.channel("messaging", "ui");
