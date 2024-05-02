@@ -1,6 +1,7 @@
 import express from "express";
 import { fetchGenerativeContent, countTokens } from "./services/fetchLLM.js";
 import { ChatClient } from "./services/ChatClient.js";
+import { updateValues } from "./services/googlesheet/index.js";
 
 const app = express();
 app.use(express.json());
@@ -87,16 +88,51 @@ app.use("/ping", (req, res) => {
 });
 
 app.post("/update", async (req, res) => {
-  const { message } = req.body;
+  const { message, user_id } = req.body;
   const channel = chatClient.client.channel("messaging", "ui");
-  await channel.sendMessage({
-    text: "received your request!",
-  });
-  res.status(200).json({
-    message: {
-      text: `${message?.text}`,
-    },
-  });
+  if (message && message !== "") {
+    const formattedMsg = chatClient.formatMessage({ message, user: user_id });
+    const newTicketBoard = await fetchGenerativeContent(
+      formattedMsg,
+      chatClient.ticketBoard
+    );
+    console.log("Got action response with Gemini from command: /update");
+
+    await channel.sendMessage({
+      text: "Successfully update your ticket!",
+    });
+
+    const transformedTasks = newTicketBoard.map((task) => [
+      task.task_id,
+      task.task_content,
+      task.status,
+      task.deadline,
+      task.assignee,
+      task.details,
+      task.progress,
+    ]);
+
+    updateValues(
+      "1K_mIsrQqBcnR1B8_nhvQngU8UDbvqK9gCbsjkfAERkw", // sheet id example: 1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8 in url: https://docs.google.com/spreadsheets/d/1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8/edit#gid=0
+      "To do!C4", // Top Left cell of Range
+      "RAW",
+      transformedTasks
+    );
+    res.status(200).json({
+      message: {
+        text: `${message?.text}`,
+      },
+    });
+  } else {
+    await channel.sendMessage({
+      text: "message cannot be empty!",
+    });
+    res.status(200).json({
+      message: {
+        text: `${message?.text}`,
+      },
+    });
+  }
 });
 
 app.listen(PORT, () => {
