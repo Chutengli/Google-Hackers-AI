@@ -20,13 +20,15 @@ async function fetchGenerativeContent(text, ticketBoard) {
   const prompt = `As a project management master, update the ticket progress board: ${ticketSummary} by analyzing and summarizing the following conversation: ${text}. Keep JSON format like this "
   [
     {
-      "task_id": "[null if not mentioned]",
+      "channel": "[channel name]",
+      "task_id": "[assign one for new tasks using both letter and number]",
       "task_content": "[Content]",
-      "status": "[To do/Doing/Done]",
+      "status": "[To Do/In Progress/Done]",
       "deadline": "[Updated or Confirmed Deadline]",
       "assignee": "[Member Name if assigned]",
       "details": "[Details]",
-      "progress": "[Progress Percentage]"
+      "progress": "[Progress Percentage]",
+      "updates": "[latest progress update for existing tasks, keep previous progress record]"
     },...
   ]
   "
@@ -58,6 +60,7 @@ async function fetchGenerativeContent(text, ticketBoard) {
     }
 
     const response = await result.response;
+    // to do: rerun if undefined
     console.log("Received Response: ", response.candidates[0].content.parts[0].text)
     const parsedResponse = parseJSONFromText(response.candidates[0].content.parts[0].text);
     

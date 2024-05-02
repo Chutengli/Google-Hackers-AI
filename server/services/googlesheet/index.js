@@ -109,6 +109,23 @@ async function updateValues(spreadsheetId, range, valueInputOption, values) {
     throw err;
   }
 }
+async function clearRange(sheetId, range) {
+  const auth = await authorize();
+  const service = google.sheets({ version: "v4", auth });
+
+  var params = {
+    spreadsheetId: sheetId,
+    range: range,
+  };
+  try {
+    const result = await service.spreadsheets.values.clear(params);
+    console.log("%d cells updated.", result.data.updatedCells);
+    return result;
+  } catch (err) {
+    // TODO (Developer) - Handle exception
+    throw err;
+  }
+}
 // Ex. 
 // updateValues(
 //   "asdfasdfawefawefawe",
@@ -121,4 +138,4 @@ async function updateValues(spreadsheetId, range, valueInputOption, values) {
 //   ]
 // );
 
-export { updateValues };
+export { updateValues , clearRange};
