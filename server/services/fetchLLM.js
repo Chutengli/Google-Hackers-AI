@@ -8,7 +8,7 @@ const generationConfig = {
   temperature: 0.9,
   topK: 1,
   topP: 1,
-  maxOutputTokens: 1000,
+  maxOutputTokens: 2000,
   response_mime_type: "text/plain",
 };
 
@@ -17,7 +17,7 @@ async function fetchGenerativeContent(text, ticketBoard) {
   // Convert ticketBoard into a summarized JSON string for input
   const ticketSummary = JSON.stringify({ projects: ticketBoard });
 
-  const prompt = `As a project management master, update the ticket progress board: ${ticketSummary} by analyzing and summarizing the following conversation: ${text}. Keep JSON format like this "
+  const prompt = `As a project management master, update existing tasks and add new tasks on the ticket progress board: ${ticketSummary} by analyzing and summarizing the following conversation: ${text}. You can ignore tasks marked as done. Keep JSON format like this "
   [
     {
       "channel": "[channel name]",
@@ -28,7 +28,7 @@ async function fetchGenerativeContent(text, ticketBoard) {
       "assignee": "[Member Name if assigned]",
       "details": "[Details]",
       "progress": "[Progress Percentage]",
-      "updates": "[latest progress update for existing tasks, keep previous progress record]"
+      "updates": "[latest progress update for existing tasks, keep previous progresses]"
     },...
   ]
   "
@@ -61,6 +61,19 @@ async function fetchGenerativeContent(text, ticketBoard) {
 
     const response = await result.response;
     // to do: rerun if undefined
+    if (response.candidates[0].content.parts == undefined) {
+      console.warn(`Response was undefined, retrying...`);
+      const result = await model.generateContent({
+        contents: [{ role: "user", parts }], // Send the correct parts to the content generation
+      });
+  
+      if (result.response.promptFeedback && result.response.promptFeedback.blockReason) {
+        return {
+          error: `Blocked for ${result.response.promptFeedback.blockReason}`,
+        };
+      }
+    }
+
     console.log("Received Response: ", response.candidates[0].content.parts[0].text)
     const parsedResponse = parseJSONFromText(response.candidates[0].content.parts[0].text);
     

@@ -4,6 +4,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { execSync } from "child_process";
 
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 // import users from "./data/users.json";
 const importUserId = () => {
   const dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -39,7 +41,7 @@ const importChatHistory = async (channelName, chatClient) => {
   console.log("Importing conversation history...");
   const dirname = path.dirname(fileURLToPath(import.meta.url));
   const chatHistory = JSON.parse(
-    fs.readFileSync(path.resolve(dirname, "./data/chatHistory.json"), "utf8")
+    fs.readFileSync(path.resolve(dirname, "./data/chatHistoryLong.json"), "utf8")
   );
 
   // due to the getStream package could only create ONE socket for each process, we are executing other js script to send message
@@ -58,23 +60,12 @@ const importChatHistory = async (channelName, chatClient) => {
   };
   // fetchMessage("./automation/utils/userASendMessage.js", "ui", "This is userA speaking...");
 
-  chatHistory.forEach(({ id, text }) => {
-    if (id === "userA") {
-      fetchMessage("./automation/utils/userASendMessage.js", channelName, text);
-    } else if (id === "userB") {
-      fetchMessage("./automation/utils/userBSendMessage.js", channelName, text);
-    } else if (id === "userC") {
-      fetchMessage("./automation/utils/userCSendMessage.js", channelName, text);
-    } else if (id === "userD") {
-      fetchMessage("./automation/utils/userDSendMessage.js", channelName, text);
-    } else if (id === "userE") {
-      fetchMessage("./automation/utils/userESendMessage.js", channelName, text);
-    } else if (id === "userF") {
-      fetchMessage("./automation/utils/userFSendMessage.js", channelName, text);
-    } else {
-      console.error("Invalid user id.");
-    }
-  });
+
+  for (const { id, text } of chatHistory) {
+    const scriptPath = `./automation/utils/${id}SendMessage.js`;
+    await fetchMessage(scriptPath, channelName, text);
+    await sleep(2000); // Wait for 5 seconds
+  }
 
   console.log("Conversation history imported successfully.");
 };

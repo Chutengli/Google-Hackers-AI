@@ -128,14 +128,16 @@ export class ChatClient {
       ]);
       clearRange(
         "1K_mIsrQqBcnR1B8_nhvQngU8UDbvqK9gCbsjkfAERkw", // sheet id example: 1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8 in url: https://docs.google.com/spreadsheets/d/1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8/edit#gid=0
-        "TEST!B4:K50"
-      );
-      updateValues(
-        "1K_mIsrQqBcnR1B8_nhvQngU8UDbvqK9gCbsjkfAERkw", // sheet id example: 1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8 in url: https://docs.google.com/spreadsheets/d/1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8/edit#gid=0
-        "TEST!B4", // Top Left cell of Range
-        "RAW",
-        transformedTasks
-      );
+        "Congregated!B4:K50"
+      ).then(() => {
+        updateValues(
+          "1K_mIsrQqBcnR1B8_nhvQngU8UDbvqK9gCbsjkfAERkw", // sheet id example: 1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8 in url: https://docs.google.com/spreadsheets/d/1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8/edit#gid=0
+          "Congregated!B4", // Top Left cell of Range
+          "RAW",
+          transformedTasks
+        )
+      });
+
 
       // Define a dictionary to map channels to Google Sheets names
       const channelToSheetMap = {
@@ -175,13 +177,14 @@ export class ChatClient {
             clearRange(
               "1K_mIsrQqBcnR1B8_nhvQngU8UDbvqK9gCbsjkfAERkw", // sheet id example: 1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8 in url: https://docs.google.com/spreadsheets/d/1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8/edit#gid=0
               rangeClear
-            );
-            updateValues(
-              "1K_mIsrQqBcnR1B8_nhvQngU8UDbvqK9gCbsjkfAERkw", // Example sheet id
-              rangeStart,
-              "RAW",
-              tasksForChannel
-            );
+            ).then(() => {
+              updateValues(
+                "1K_mIsrQqBcnR1B8_nhvQngU8UDbvqK9gCbsjkfAERkw", // Example sheet id
+                rangeStart,
+                "RAW",
+                tasksForChannel
+              )
+            });
           }
         });
       }
