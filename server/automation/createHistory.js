@@ -4,6 +4,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { execSync } from "child_process";
 
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 // import users from "./data/users.json";
 const importUserId = () => {
   const dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -15,13 +17,13 @@ const importUserId = () => {
 };
 
 // create channel with user
-const createChannel = async (channelName, userIdList, chatClient) => {
+const createChannel = async (channelName, channelID, userIdList, chatClient) => {
   console.log(
     `Creating Channel "${channelName}" with following user id: ${userIdList}`
   );
   await chatClient.connect();
   const channel = chatClient.client.channel("messaging", channelName, {
-    name: "UI Improvements",
+    name: channelID,
     members: userIdList,
   });
   const res = await channel.create();
@@ -32,6 +34,12 @@ const createChannel = async (channelName, userIdList, chatClient) => {
   console.log(
     `Channel "${channelName}" created successfully with users: ${userIdList}`
   );
+};
+
+const deleteChannel = async (cid1, cid2, chatClient) => {
+  await chatClient.connect();
+  // server-side hard delete
+  const response = await chatClient.client.deleteChannels([cid1, cid2], {hard_delete: true});
 };
 
 // import conversation history
@@ -58,39 +66,31 @@ const importChatHistory = async (channelName, chatClient) => {
   };
   // fetchMessage("./automation/utils/userASendMessage.js", "ui", "This is userA speaking...");
 
-  chatHistory.forEach(({ id, text }) => {
-    if (id === "userA") {
-      fetchMessage("./automation/utils/userASendMessage.js", channelName, text);
-    } else if (id === "userB") {
-      fetchMessage("./automation/utils/userBSendMessage.js", channelName, text);
-    } else if (id === "userC") {
-      fetchMessage("./automation/utils/userCSendMessage.js", channelName, text);
-    } else if (id === "userD") {
-      fetchMessage("./automation/utils/userDSendMessage.js", channelName, text);
-    } else if (id === "userE") {
-      fetchMessage("./automation/utils/userESendMessage.js", channelName, text);
-    } else if (id === "userF") {
-      fetchMessage("./automation/utils/userFSendMessage.js", channelName, text);
-    } else {
-      console.error("Invalid user id.");
-    }
-  });
+
+  for (const { id, channel, text } of chatHistory) {
+    const scriptPath = `./automation/utils/${id}SendMessage.js`;
+    await fetchMessage(scriptPath, channel, text);
+    await sleep(2000); // Wait for 5 seconds
+  }
 
   console.log("Conversation history imported successfully.");
 };
 
 const main = async () => {
   try {
-    // collect users
-    // const userIdList = importUserId();
+    const chatClient = new ChatClient();
 
     // create channel
-    const channelName = "ui";
-    const chatClient = new ChatClient();
-    // await chatClient.connect();
-    // await createChannel(channelName, userIdList, chatClient);
+    // const userIdList = importUserId();
+    // const channelName = "eng";
+    // const channelID = "Engineering";
+    // await createChannel(channelName, channelID, userIdList, chatClient);
+
+    // delete channel
+    // await deleteChannel('messaging:eng','messaging:con', chatClient)
 
     // import conversation history
+    const channelName = "eng";
     await importChatHistory(channelName, chatClient);
   } catch (error) {
     console.error(error);

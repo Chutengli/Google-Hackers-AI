@@ -1,6 +1,6 @@
 import { StreamChat } from "stream-chat";
 import { fetchGenerativeContent } from "./fetchLLM.js";
-import { updateValues } from "./googlesheet/index.js";
+import { updateValues, clearRange } from "./googlesheet/index.js";
 
 export class ChatClient {
   client;
@@ -74,21 +74,17 @@ export class ChatClient {
   }
 
   formatMessage(event) {
-    const { message, user } = event;
+    const { message, user, channel_id } = event;
     const createdAt = new Date(message.created_at).toLocaleString(); // Converts the UTC date-time to a more readable local date-time string
     const jobTitle = user?.jobTitle ?? "User"; // Fallback to 'User' if jobTitle is not available
     const userId = user?.id;
     const text = message.text;
 
-    return `At ${createdAt}, ${jobTitle}, ${userId} said '${text}'`;
+    return `At ${createdAt}, ${jobTitle}, ${userId} said '${text}' in '${channel_id}'`;
   }
 
-  convertTicketBoardToText(ticketBoard) {
-    return ticketBoard
-      .map((task) => {
-        return `Task: ${task.task_content}\nStatus: ${task.status}\nAssignee: ${task.assignee}\nDetails: ${task.details}\nProgress: ${task.progress}%\n`;
-      })
-      .join("\n");
+  convertTicketBoardToText(task) {
+    return `**Task ID**: ${task.task_id}\n**Task Content**: ${task.task_content}\n**Status**: ${task.status}\n**Assignee**: ${task.assignee}\n**Details**: ${task.details}\n**Progress**: ${task.progress}\n**Updates**: ${task.updates}\n`;
   }
 
   async processMessages() {
@@ -103,15 +99,23 @@ export class ChatClient {
 
     try {
       this.ticketBoard = await fetchGenerativeContent(text, this.ticketBoard);
-      const formattedText = this.convertTicketBoardToText(this.ticketBoard);
-      console.log("Returned messages:", formattedText);
-
-      const channel = this.client.channel("messaging", "ui");
-      await channel.sendMessage({
-        text: formattedText,
+      for (const ticket of this.ticketBoard) {
+        const channel = this.client.channel("messaging", ticket.channel);
+        const formattedText = this.convertTicketBoardToText(ticket);
+        console.log("Sending message.");
+        await channel.sendMessage({
+          text: formattedText,
+        });
+      }
+      const today = new Date().toLocaleDateString("en-US", {
+        month: "2-digit",
+        day: "2-digit",
+        year: "numeric",
       });
 
       const transformedTasks = this.ticketBoard.map((task) => [
+        today,
+        task.channel,
         task.task_id,
         task.task_content,
         task.status,
@@ -119,14 +123,72 @@ export class ChatClient {
         task.assignee,
         task.details,
         task.progress,
+        task.updates,
       ]);
-
-      updateValues(
+      clearRange(
         "1K_mIsrQqBcnR1B8_nhvQngU8UDbvqK9gCbsjkfAERkw", // sheet id example: 1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8 in url: https://docs.google.com/spreadsheets/d/1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8/edit#gid=0
-        "To do!C4", // Top Left cell of Range
-        "RAW",
-        transformedTasks
-      );
+        "Congregated!B4:K50"
+      ).then(() => {
+        updateValues(
+          "1K_mIsrQqBcnR1B8_nhvQngU8UDbvqK9gCbsjkfAERkw", // sheet id example: 1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8 in url: https://docs.google.com/spreadsheets/d/1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8/edit#gid=0
+          "Congregated!B3", // Top Left cell of Range
+          "RAW",
+          transformedTasks
+        );
+      });
+
+      // Define a dictionary to map channels to Google Sheets names
+      const channelToSheetMap = {
+        des: "Design",
+        eng: "Engineering",
+        // Add more mappings as needed
+      };
+
+      // Function to update tasks based on channel
+      function updateTasksByChannel(ticketBoard) {
+        // Iterate over each entry in the channel-to-sheet mapping
+        const today = new Date().toLocaleDateString("en-US", {
+          month: "2-digit",
+          day: "2-digit",
+          year: "numeric",
+        });
+        Object.entries(channelToSheetMap).forEach(([channel, sheetName]) => {
+          // Filter tasks that match the current channel
+          const tasksForChannel = ticketBoard
+            .filter((task) => task.channel === channel)
+            .map((task) => [
+              today,
+              task.channel,
+              task.task_id,
+              task.task_content,
+              task.status,
+              task.deadline,
+              task.assignee,
+              task.details,
+              task.progress,
+              task.updates,
+            ]);
+
+          // If there are tasks for this channel, update the corresponding sheet
+          if (tasksForChannel.length > 0) {
+            const rangeStart = `${sheetName}!B4`; // Adjust the range start as necessary
+            const rangeClear = `${sheetName}!B4:K50`; // Adjust the range start as necessary
+            clearRange(
+              "1K_mIsrQqBcnR1B8_nhvQngU8UDbvqK9gCbsjkfAERkw", // sheet id example: 1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8 in url: https://docs.google.com/spreadsheets/d/1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8/edit#gid=0
+              rangeClear
+            ).then(() => {
+              updateValues(
+                "1K_mIsrQqBcnR1B8_nhvQngU8UDbvqK9gCbsjkfAERkw", // Example sheet id
+                rangeStart,
+                "RAW",
+                tasksForChannel
+              );
+            });
+          }
+        });
+      }
+
+      updateTasksByChannel(this.ticketBoard);
 
       console.log("Message sent successfully!");
     } catch (error) {
