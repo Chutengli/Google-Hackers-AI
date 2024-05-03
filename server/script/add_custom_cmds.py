@@ -47,7 +47,16 @@ def main():
 
     print("Successfully Created command: /" + args.name)
 
-    channel = server_client.channel("messaging", "ui")
+    channel = server_client.channel("messaging", "eng")
+    channel.update_partial({"config_overrides": {"commands": [args.name]}})
+
+    channel = server_client.channel("messaging", "des")
+    channel.update_partial({"config_overrides": {"commands": [args.name]}})
+
+    channel = server_client.channel("messaging", "con")
+    channel.update_partial({"config_overrides": {"commands": [args.name]}})
+
+    channel = server_client.channel("messaging", "travel")
     channel.update_partial({"config_overrides": {"commands": [args.name]}})
 
     server_client.update_app_settings(

@@ -53,11 +53,11 @@ export class ChatClient {
       }
     });
   }
-  
-  handleNewMessage(event) {  
+
+  handleNewMessage(event) {
     // Format the message into a human-readable sentence.
     const formattedMessage = this.formatMessage(event);
-    
+
     this.messageBuffer.push(formattedMessage);
     this.messageCount++;
 
@@ -76,17 +76,19 @@ export class ChatClient {
   formatMessage(event) {
     const { message, user } = event;
     const createdAt = new Date(message.created_at).toLocaleString(); // Converts the UTC date-time to a more readable local date-time string
-    const jobTitle = user.jobTitle || 'User'; // Fallback to 'User' if jobTitle is not available
-    const userId = user.id;
+    const jobTitle = user?.jobTitle ?? "User"; // Fallback to 'User' if jobTitle is not available
+    const userId = user?.id;
     const text = message.text;
-    
+
     return `At ${createdAt}, ${jobTitle}, ${userId} said '${text}'`;
   }
 
   convertTicketBoardToText(ticketBoard) {
-    return ticketBoard.map(task => {
-      return `Task: ${task.task_content}\nStatus: ${task.status}\nAssignee: ${task.assignee}\nDetails: ${task.details}\nProgress: ${task.progress}%\n`;
-    }).join('\n');
+    return ticketBoard
+      .map((task) => {
+        return `Task: ${task.task_content}\nStatus: ${task.status}\nAssignee: ${task.assignee}\nDetails: ${task.details}\nProgress: ${task.progress}%\n`;
+      })
+      .join("\n");
   }
 
   async processMessages() {
@@ -96,28 +98,27 @@ export class ChatClient {
       return;
     }
     // Join all formatted messages into a single string, each sentence separated by a new line or space.
-    const text = this.messageBuffer.join('\n');
+    const text = this.messageBuffer.join("\n");
     this.resetMessageTracking();
 
     try {
       this.ticketBoard = await fetchGenerativeContent(text, this.ticketBoard);
       const formattedText = this.convertTicketBoardToText(this.ticketBoard);
       console.log("Returned messages:", formattedText);
-      
+
       const channel = this.client.channel("messaging", "ui");
       await channel.sendMessage({
         text: formattedText,
       });
 
-      
-      const transformedTasks = this.ticketBoard.map(task => [
+      const transformedTasks = this.ticketBoard.map((task) => [
         task.task_id,
         task.task_content,
         task.status,
         task.deadline,
         task.assignee,
         task.details,
-        task.progress
+        task.progress,
       ]);
 
       updateValues(

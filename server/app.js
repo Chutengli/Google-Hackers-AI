@@ -89,20 +89,24 @@ app.use("/ping", (req, res) => {
 
 app.post("/update", async (req, res) => {
   const { message, user_id } = req.body;
-  const channel = chatClient.client.channel("messaging", "ui");
+  const channel = chatClient.client.channel(
+    message.cid.split(":")[0],
+    message.cid.split(":")[1]
+  );
   if (message && message !== "") {
     const formattedMsg = chatClient.formatMessage({ message, user: user_id });
     const newTicketBoard = await fetchGenerativeContent(
       formattedMsg,
       chatClient.ticketBoard
     );
+
     console.log("Got action response with Gemini from command: /update");
 
     await channel.sendMessage({
       text: "Successfully update your ticket!",
     });
 
-    const transformedTasks = newTicketBoard.map((task) => [
+    const transformedTasks = newTicketBoard?.map((task) => [
       task.task_id,
       task.task_content,
       task.status,
