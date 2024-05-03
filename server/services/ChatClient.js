@@ -99,11 +99,10 @@ export class ChatClient {
 
     try {
       this.ticketBoard = await fetchGenerativeContent(text, this.ticketBoard);
-      console.log(this.ticketBoard)
       for (const ticket of this.ticketBoard) {
         const channel = this.client.channel("messaging", ticket.channel);
         const formattedText = this.convertTicketBoardToText(ticket);
-        console.log("Sending message:", formattedText);
+        console.log("Sending message.");
         await channel.sendMessage({
           text: formattedText,
         });
@@ -132,7 +131,7 @@ export class ChatClient {
       ).then(() => {
         updateValues(
           "1K_mIsrQqBcnR1B8_nhvQngU8UDbvqK9gCbsjkfAERkw", // sheet id example: 1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8 in url: https://docs.google.com/spreadsheets/d/1Ktxkmr5FHGbMzfjSmQGLcgjxxBBEmENLOBVVsWojWp8/edit#gid=0
-          "Congregated!B4", // Top Left cell of Range
+          "Congregated!B3", // Top Left cell of Range
           "RAW",
           transformedTasks
         )
@@ -141,7 +140,7 @@ export class ChatClient {
 
       // Define a dictionary to map channels to Google Sheets names
       const channelToSheetMap = {
-        ui: "Design",
+        des: "Design",
         eng: "Engineering",
         // Add more mappings as needed
       };
@@ -156,7 +155,6 @@ export class ChatClient {
         });
         Object.entries(channelToSheetMap).forEach(([channel, sheetName]) => {
           // Filter tasks that match the current channel
-          console.log(channel)
           const tasksForChannel = ticketBoard.filter(task => task.channel === channel).map(task => [
             today,
             task.channel,

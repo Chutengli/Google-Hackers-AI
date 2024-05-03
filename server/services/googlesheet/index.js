@@ -119,7 +119,6 @@ async function clearRange(sheetId, range) {
   };
   try {
     const result = await service.spreadsheets.values.clear(params);
-    console.log("%d cells updated.", result.data.updatedCells);
     return result;
   } catch (err) {
     // TODO (Developer) - Handle exception

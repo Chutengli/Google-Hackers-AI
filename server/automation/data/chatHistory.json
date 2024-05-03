@@ -1,927 +1,927 @@
 [
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "con",
         "text": "Hello team, let's kick off the design phase by brainstorming the key features our app should have. We need to ensure a user-friendly experience."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "con",
         "text": "I agree. I'll start sketching out the initial wireframes based on our feature list. Let's prioritize simplicity and ease of navigation."
     },
     {
         "id": "userA",
-        "channel": "ENGINEER",
+        "channel": "con",
         "text": "Team, let's discuss the technological stack we'll be using for the backend. We need to ensure it supports scalability and security."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "con",
         "text": "I recommend using Node.js for the backend due to its non-blocking I/O and event-driven architecture which is great for performance."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "con",
         "text": "For the front-end, React seems like a solid choice. It's fast, scalable, and has a strong community. Plus, it will integrate well with Node.js."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "con",
         "text": "Once we decide on the stack, I'll set up the testing frameworks. We should consider using Jest for unit testing both front-end and back-end."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "con",
         "text": "I'll look into setting up the initial project structure in React and start integrating the designs once they are ready."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "con",
         "text": "I've completed the first draft of the wireframes. I'll upload them shortly and look forward to your feedback."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "con",
         "text": "Excellent work on the wireframes. Let's schedule a review session tomorrow to finalize and move forward with detailed designs."
     },
     {
         "id": "userA",
-        "channel": "ENGINEER",
+        "channel": "con",
         "text": "We need to start integrating payment gateways next week. We should support multiple options, including credit cards, digital wallets, and direct bank transfers."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "con",
         "text": "Integrating multiple payment methods will require robust security measures. I propose implementing OAuth for secure API access and encryption for sensitive data."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "con",
         "text": "I'll need to prepare test cases for each payment method and ensure that our security protocols are up to standard. It's going to be a detailed process."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "con",
         "text": "Also, considering the app's scope, I suggest adding a feature for real-time tracking of delivery trucks using GPS integration. It will enhance user experience."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "con",
         "text": "The front-end will need updates to accommodate the GPS tracking feature. I'll start working on a dynamic map view component."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "I'm revisiting the user interface to add an intuitive dashboard for order tracking. It needs to be user-friendly and provide information at a glance."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Let's make sure we also focus on the app's accessibility features. We need to ensure it's usable for everyone, including those with disabilities."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "I'll work on implementing accessible design principles, such as text readability, voice commands, and easy navigation for people with various disabilities."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll start developing the API for the GPS tracking feature. It needs to handle high-frequency data updates efficiently without affecting app performance."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm setting up an automated testing environment to handle the increased load and ensure our server's stability under heavy use."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll assist with both front-end and back-end integrations for the new features. We need a smooth flow between the payment system and GPS tracking."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Given the new features we're adding, we should consider the impact on load times and overall performance. We may need to optimize our current architecture."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm reviewing the current architecture for potential bottlenecks. We might need to think about implementing a more efficient data caching system to improve performance."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "The new dynamic components are increasing the frontend load. I'll look into lazy loading and code splitting techniques to speed up our app."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "I'm also considering the visual load. We need to ensure that the design remains clean and not cluttered, despite the increased number of features."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll start integrating a more robust database solution that can handle our scaling needs, especially with the introduction of real-time data features."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "With all these new features, we should also update our security testing protocols. I'm planning an extensive penetration testing schedule."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Let's prepare for the next sprint review. We need to demonstrate the new payment and tracking functionalities to the stakeholders and gather feedback."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm coordinating with the front-end and back-end teams to ensure all integrations are seamless for the upcoming demo."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've begun implementing server-side rendering for our React app to improve initial load times and SEO, which will be crucial as we scale."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "I'm working on a revised layout that incorporates feedback from our last user testing session. We need to ensure the changes are intuitive and effective."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've automated the new tests and integrated them into our CI/CD pipeline. This will help us catch issues faster as we continue to develop."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "We're getting close to our beta release. It's crucial that all features are integrated smoothly and tested rigorously. Let's ensure our timeline is adhered to strictly."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Based on the latest user feedback, we need a few tweaks to the checkout process to make it more intuitive. I'm proposing some changes to simplify the steps."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm setting up the final stages of our database migration to a more scalable solution. This should handle the expected surge in user data post-launch."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll work with both the front-end and back-end teams to ensure the new checkout process is seamlessly integrated."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll focus on load testing this week. We need to be confident that our app can handle thousands of concurrent users without performance degradation."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm optimizing our images and scripts to further reduce load times. Every millisecond counts, especially on mobile devices."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Let's also start planning the marketing materials. We need to ensure our app's unique features are highlighted effectively in all promotional efforts."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "I'll collaborate with the marketing team to create visuals that match the app's design language and communicate its benefits clearly."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Also, I'm implementing advanced security protocols to protect user data, especially with the payment integration."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll assist in debugging the final integration issues that popped up in the last integration test. We need everything running smoothly for the beta."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Preparing a comprehensive bug report from the latest tests. We'll need a quick turnaround on these fixes to stay on schedule for the beta release."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "We are on the final stretch, everyone. Let's ensure we maintain focus and address all the pending items before our launch date. Regular updates are crucial at this stage."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm working on the last-minute performance optimizations. Also, we need to ensure that the deployment scripts are ready and tested for both staging and production environments."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've added redundancy to our backend services to ensure we can handle peak loads. Also, failover mechanisms are now in place and tested."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm conducting final checks on the front-end. Ensuring that all elements are responsive and that accessibility standards are met across all devices."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've scheduled a full regression test for tonight. We'll know by tomorrow morning if there are any critical issues that need resolving."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Finalizing the launch landing page designs and working closely with marketing to prepare the online campaign. Our goal is to make a strong first impression."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Let's also prepare for the post-launch phase. We need a solid plan in place for user feedback collection and rapid response to any issues that might arise."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Agreed. I'll be on standby for any hotfixes post-launch. It's crucial we address any user-reported bugs swiftly to maintain a good reputation."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm also setting up real-time monitoring for our servers to ensure we catch and resolve any performance or downtime issues instantly."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm optimizing our asset delivery to ensure that load times are as fast as possible. We've implemented CDN solutions to help with this."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Once we're live, I'll continue to monitor user journeys and collect data on any UI issues or navigation errors users encounter."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Team, we're only days away from launch. It's critical we go through all systems to ensure we're fully coordinated and ready to troubleshoot any issues as they arise."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "All user interface components have been double-checked for usability and aesthetics. I'm also preparing a quick user guide that will be available in the app."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "The back-end team has set up a war room for launch day. We'll monitor everything in real-time to address any database or server issues instantly."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've reviewed all integration points between the front-end and back-end. Also, emergency contact protocols are set up in case we need to escalate any issues."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Final testing on mobile and desktop browsers is complete. We've also ensured that all third-party APIs are responding as expected under load."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've organized an overnight session to perform last-minute stress testing. We're ensuring that no stone is left unturned."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Let's also finalize our post-launch review meeting. We'll need to gather and discuss all feedback and performance metrics to plan our next steps effectively."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Post-launch, I'll focus on optimizing any sluggish interfaces or processes we identify from user feedback."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll ensure that all data logging and monitoring tools are fully operational. We can't afford any blind spots in how the app performs under real conditions."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll be on standby to make any quick fixes to the front-end as feedback comes in. Quick response times could be crucial for our user retention."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Following launch, I'll compile a detailed report on any bugs or issues encountered by users, along with potential solutions or recommendations."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Team, congratulations on the successful launch of our last project! We've now been assigned a new project which will be more challenging and complex. This project will involve developing an integrated system for smart home automation."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "This sounds exciting! I'll start researching current trends in smart home interfaces to ensure we're delivering a cutting-edge user experience."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Smart home automation will require us to work with IoT devices. I'll look into the best protocols for device communication and data security."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll focus on how we can integrate various device APIs smoothly into our system. We need a robust framework that can handle multiple device types and manufacturers."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Given the variety of devices, the front-end will need to be extremely adaptable. I'll start experimenting with responsive layouts and control panels suitable for all screen sizes."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Testing for this project will be crucial, especially considering the variety of devices and the potential for security vulnerabilities. I'll set up a detailed testing strategy that covers all bases."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Let's schedule a series of meetings next week to define our project milestones and deliverables. We need a clear roadmap with defined responsibilities."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Collaboration with hardware teams will be essential. I'll arrange for initial discussions with potential vendors to understand their capabilities and constraints."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "We should also consider a scalable cloud solution to handle the data processing and storage needs. I'll begin evaluating potential cloud services."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Accessibility will be key. I'll make sure our interfaces are not only responsive but also accessible to users with disabilities."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll prioritize setting up environments that mimic real-world usage as closely as possible to ensure our tests are valid and comprehensive."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "We need to ensure all aspects of user privacy are considered from the ground up. Let's have a session focused on security and data protection next week."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "I'm working on a prototype for a customizable dashboard that users can adjust according to their preferences. This will need to be intuitive and provide a seamless experience across all devices."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Integrating with different IoT protocols is proving to be a challenge. We may need to develop a middleware layer that can standardize the data before it hits our backend."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm setting up a simulation environment to test how our system interacts with mock IoT devices. This should help us identify any integration issues early on."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "The feedback from our initial UI/UX tests indicates that users are finding the controls a bit complex. I'll work on simplifying the user interactions."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Security testing will be crucial. I'm planning comprehensive penetration testing to identify any vulnerabilities, especially given the nature of IoT device integration."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Let's also focus on the user onboarding process. We need to make it as smooth as possible to ensure user retention right from the start."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "We'll need robust error handling and feedback mechanisms. Users should be immediately informed about any issues with their device connectivity."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Agreed. I'll work on ensuring our backend can handle such scenarios gracefully and provide users with helpful error messages."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm improving the real-time feedback on the UI so that users can see changes instantly when they interact with their smart devices."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll align our testing strategies with the latest updates and ensure our QA processes are agile enough to adapt to rapid changes in project requirements."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "We're approaching critical milestones. Let's ensure all teams are aligned on the deadlines and requirements for the upcoming integration tests."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "I've been refining the dashboard based on the latest user feedback. Now focusing on accessibility to make sure our product is compliant with all relevant standards."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "The middleware solution to handle diverse IoT protocols is now implemented. Starting comprehensive testing this week to ensure smooth data handling and security."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm coordinating with the UI/UX and backend teams to ensure that our APIs are perfectly aligned with the frontend requirements."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Working on the final adjustments for the mobile app version. It's crucial that our interface is seamless across different device types."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm setting up automated scripts for UI and functionality testing across all versions. We need to catch any discrepancies before they reach our users."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Let's also start planning for the soft launch phase. We'll need a smaller user group to test our system in real-world conditions."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll ensure our logging system is detailed enough to track user interactions without compromising privacy. This data will be crucial for post-launch optimizations."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll optimize our cloud storage solutions to handle the expected data influx efficiently. Ensuring data integrity and speed is key."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm also implementing a feature for users to receive push notifications related to their device activities. It needs to be both informative and non-intrusive."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Focusing on stress testing now to ensure our system can handle peak loads especially during the soft launch when we expect the highest level of activity."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "We need to confirm all systems are green for the soft launch. Each team must double-check their components and confirm readiness by tomorrow."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "I've updated the user guide with the latest dashboard changes and submitted it for localization. Ensuring it's available in multiple languages for accessibility."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "All back-end systems have been reviewed for performance and security. I've also set up additional monitoring tools to watch for any unusual activity post-launch."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Integration testing between the mobile and desktop versions is complete. We're seeing stable interactions across all platforms now."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "The responsiveness on the front-end should now be optimized. I've implemented adaptive design techniques to ensure the best user experience regardless of the device."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've coordinated with the support team to handle incoming reports during the soft launch. We have a quick response strategy in place for any reported issues."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "We're also preparing a comprehensive feedback form to collect user impressions and issues directly from the app. It's vital for our iterative development post-launch."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'll be monitoring the system in real-time during the soft launch to quickly address any backend or integration failures."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Load balancing has been configured to handle the expected increase in traffic. We should be well-prepared for a high number of simultaneous users."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Push notifications and real-time updates have been fine-tuned. Users should receive immediate feedback when interacting with their smart devices."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Last round of stress testing is scheduled for tonight. If all goes well, we'll be clear to proceed with the planned soft launch date without delays."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Today is the day! Let's keep communications clear and be ready to tackle any issues swiftly. All teams, please report in regularly throughout the launch."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "I'm monitoring user interactions with the dashboard for any UX issues. Feedback will be crucial to iterate and improve."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "All systems are stable at the moment. I'm keeping an eye on server performance and traffic loads to ensure everything runs smoothly."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm ready to fix any integration issues between the front-end and back-end. Let's stay alert for any anomalies reported."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Checking all front-end systems for responsiveness and speed. I'll address any glitches as they come up."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've set up automated systems to track and log any bugs reported. We'll prioritize them based on severity and impact."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Let's keep our customer support team looped in with real-time updates so they can manage user inquiries effectively."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Real-time monitoring tools are helping us track the system's performance. Any downtime will be addressed immediately."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm ensuring data integrity is maintained as traffic increases. It's critical our data handling processes are flawless."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "All adaptive design features are functioning as intended. I'm particularly focused on ensuring a smooth experience on mobile devices."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Continuously running tests to simulate user behavior at scale. We need to catch and resolve issues before they affect a larger user base."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Great job staying on top of everything, team. Let's keep this momentum going. Regular updates are crucial as we gather more user data."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "I'm compiling all user feedback on the UX to identify patterns that might suggest needed improvements. We want this to be as intuitive as possible."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've noticed an uptick in server load as more users come online. I'm adjusting our scaling strategies to accommodate this smoothly."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Working closely with the back-end to ensure data syncing issues are resolved. We've had a couple of reports of delays that need addressing."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Some users have reported difficulty with the navigation on smaller screens. I'm making adjustments to improve the responsiveness."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm focusing on the reported bugs related to device integration. Each bug is being logged and tracked for rapid resolution."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Let's ensure we are also ready with a post-launch support plan. We need a streamlined process to handle user issues as they emerge."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Monitoring tool alerts are now more finely tuned to give us early warnings about potential issues before they affect users."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm implementing enhanced security measures following some minor alerts. We need to stay ahead of any potential threats."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Updating the UI to include more dynamic elements based on user interactions. This should make the app feel more alive and responsive."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Setting up an automated system for continuous performance testing to keep our standards high even as we scale."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Let's keep a close eye on the feedback from our soft launch. Every piece of user feedback is invaluable as we prepare for the official release. Keep up the great work, team."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Based on recent feedback, I'm revising some of the more complex interaction designs to make them more intuitive. Simplicity is key for broader adoption."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm optimizing our data handling to improve speed and efficiency. The increased load from the soft launch has given us lots of valuable data on this front."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm collaborating with the UI/UX team to ensure that the backend changes smoothly support the new design updates."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've made some adjustments to the CSS for better performance on older devices, ensuring our app is accessible to a wider audience."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm prioritizing testing on the newly integrated features to ensure there are no regressions. We need to maintain our quality benchmarks consistently."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Planning the next phase of our rollout. We need to discuss marketing strategies and customer support for the official launch."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've implemented a more robust error logging system, which should help us quickly pinpoint and resolve any issues as they arise."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Updating our server infrastructure to include more redundancy and failover capabilities to ensure high availability and reliability."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Enhancing the interactive elements of the app based on analytics from user behavior during the soft launch."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Setting up round-the-clock monitoring for the first week post-launch to ensure any critical issues are addressed immediately."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "We're approaching the official launch. Let's finalize all marketing materials and ensure our support channels are fully prepared to handle inquiries."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "I'm refining the user onboarding experience to ensure it's welcoming and informative. We want new users to feel right at home from the first interaction."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've improved the database scalability based on our soft launch data. This will ensure we can handle user growth without performance hitches."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Integrating last-minute changes from the UI/UX team. We're ensuring everything runs smoothly for the final interface."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Updating the front-end to be even more responsive, especially on tablets and other non-standard devices. We're seeing a lot of engagement from these platforms."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Conducting final pre-launch tests. We're double-checking everything to ensure no major issues slip through."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Reviewing all project timelines and resource allocations for the launch day. We need every team member ready and on alert for a smooth rollout."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Setting up a live monitoring dashboard for us to observe system behavior in real-time during the launch. This will help us quickly identify and rectify any issues."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Ensuring our APIs are secured and cached properly to handle the expected spike in requests on launch day."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Fine-tuning the visual transitions and animations to ensure a polished look and feel. We want our app to stand out in the market."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Setting up an on-call schedule for the QA team post-launch. Rapid response to any technical issues is critical in the early stages after going live."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Let's ensure all hands are on deck for the launch. We need seamless coordination between development, marketing, and support teams."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "I've completed the final revisions on the UI based on our last round of feedback. It's now more intuitive and user-friendly."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "All back-end systems are optimized for high traffic. We've also added extra layers of security to safeguard user data."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "The integration of the front-end and back-end systems has been fully tested. We're ready for any amount of load now."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "The responsive design has been tweaked for performance. I've also added fallbacks for older browsers to maximize accessibility."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "All critical bugs have been addressed, and the system's stability is confirmed. We're continually running stress tests to simulate launch conditions."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "We've started rolling out our marketing campaigns. Social media, email newsletters, and online ads are all synced up to generate buzz."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've set up real-time analytics to monitor user interactions from the moment we go live. This will help us quickly understand user behavior."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm monitoring our cloud infrastructure to ensure it scales efficiently as user numbers grow. We're prepared for a smooth scaling process."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm ensuring all interactive elements are engaging and perform well under different network conditions. Performance optimization is key."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "We have a detailed incident response plan in place. Our team will be ready to tackle any issues that arise post-launch immediately."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Today's the day! Let's ensure our coordination is seamless across all teams. Quick communication and response are key. Good luck, everyone!"
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "All final UI checks are complete. I'm now focusing on monitoring user feedback in real-time to identify any immediate areas for improvement."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Servers are stable and handling the initial load well. I'm closely monitoring performance metrics and ready to scale up resources as needed."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm keeping an eye on the integration points and databases. Any slowdowns or bugs will be addressed immediately to ensure smooth operation."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Watching the front-end performance closely, especially on mobile platforms. We need to ensure a smooth experience for all users, regardless of their device."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've activated all our automated monitoring tools to detect and report any issues in real-time. We're prepared to quickly troubleshoot and deploy fixes."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Marketing and customer service teams are aligned and actively engaging with new users. We're tracking user acquisition and engagement rates closely."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Any operational issues from users are being logged and categorized for immediate action. We're all about quick resolutions today."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Continuous monitoring for security threats is active. It's crucial we maintain integrity and trust right from the start."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm also making minor adjustments in real-time based on user feedback to improve usability and accessibility."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Staying on top of bug reports and ensuring that fixes are prioritized correctly. We want to maintain a high-quality user experience without disruptions."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "Team, we're doing well so far. Let's keep the momentum going. Make sure to report any issues immediately, and let's maintain high responsiveness throughout the day."
     },
     {
         "id": "userF",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "I'm analyzing user interaction data to see how we can further refine the interface. Early feedback is mostly positive, but there are a few areas where users are experiencing confusion."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've adjusted our load balancing settings to improve server response times. Also, I'm preparing for a second wave of users as different time zones come online."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I've patched a minor integration issue between our payment gateway and the main application. Monitoring to ensure it's completely resolved."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Updating some frontend elements to make them more touch-friendly, based on user feedback from tablet users."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Rapid response has been effective so far. No major issues, and minor bugs are being resolved quickly. Continuing extensive monitoring throughout the launch period."
     },
     {
         "id": "userA",
-        "channel": "DESIGN",
+        "channel": "des",
         "text": "We need to start thinking about a debrief session post-launch to consolidate what we've learned and plan for future updates. Let's schedule that for early next week."
     },
     {
         "id": "userD",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "The real-time analytics dashboard is proving invaluable. We're able to see issues as they arise and address them before they impact a larger number of users."
     },
     {
         "id": "userC",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "I'm focusing now on optimizing database queries to speed up transactions, which should further enhance user satisfaction."
     },
     {
         "id": "userB",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Received some feedback about accessibility issues on high-contrast modes. I'm implementing fixes to address this immediately."
     },
     {
         "id": "userE",
-        "channel": "ENGINEER",
+        "channel": "eng",
         "text": "Coordinating with the support team to ensure they have all the information needed to handle user inquiries effectively and efficiently."
     }
 ]

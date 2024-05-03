@@ -17,13 +17,13 @@ const importUserId = () => {
 };
 
 // create channel with user
-const createChannel = async (channelName, userIdList, chatClient) => {
+const createChannel = async (channelName, channelID, userIdList, chatClient) => {
   console.log(
     `Creating Channel "${channelName}" with following user id: ${userIdList}`
   );
   await chatClient.connect();
   const channel = chatClient.client.channel("messaging", channelName, {
-    name: "UI Improvements",
+    name: channelID,
     members: userIdList,
   });
   const res = await channel.create();
@@ -36,12 +36,18 @@ const createChannel = async (channelName, userIdList, chatClient) => {
   );
 };
 
+const deleteChannel = async (cid1, cid2, chatClient) => {
+  await chatClient.connect();
+  // server-side hard delete
+  const response = await chatClient.client.deleteChannels([cid1, cid2], {hard_delete: true});
+};
+
 // import conversation history
 const importChatHistory = async (channelName, chatClient) => {
   console.log("Importing conversation history...");
   const dirname = path.dirname(fileURLToPath(import.meta.url));
   const chatHistory = JSON.parse(
-    fs.readFileSync(path.resolve(dirname, "./data/chatHistoryLong.json"), "utf8")
+    fs.readFileSync(path.resolve(dirname, "./data/chatHistory.json"), "utf8")
   );
 
   // due to the getStream package could only create ONE socket for each process, we are executing other js script to send message
@@ -61,9 +67,9 @@ const importChatHistory = async (channelName, chatClient) => {
   // fetchMessage("./automation/utils/userASendMessage.js", "ui", "This is userA speaking...");
 
 
-  for (const { id, text } of chatHistory) {
+  for (const { id, channel, text } of chatHistory) {
     const scriptPath = `./automation/utils/${id}SendMessage.js`;
-    await fetchMessage(scriptPath, channelName, text);
+    await fetchMessage(scriptPath, channel, text);
     await sleep(2000); // Wait for 5 seconds
   }
 
@@ -72,16 +78,19 @@ const importChatHistory = async (channelName, chatClient) => {
 
 const main = async () => {
   try {
-    // collect users
-    // const userIdList = importUserId();
+    const chatClient = new ChatClient();
 
     // create channel
-    const channelName = "ui";
-    const chatClient = new ChatClient();
-    // await chatClient.connect();
-    // await createChannel(channelName, userIdList, chatClient);
+    // const userIdList = importUserId();
+    // const channelName = "eng";
+    // const channelID = "Engineering";
+    // await createChannel(channelName, channelID, userIdList, chatClient);
+
+    // delete channel
+    // await deleteChannel('messaging:eng','messaging:con', chatClient)
 
     // import conversation history
+    const channelName = "eng";
     await importChatHistory(channelName, chatClient);
   } catch (error) {
     console.error(error);

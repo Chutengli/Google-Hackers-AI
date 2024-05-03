@@ -8,7 +8,7 @@ const generationConfig = {
   temperature: 0.9,
   topK: 1,
   topP: 1,
-  maxOutputTokens: 2000,
+  maxOutputTokens: 4000,
   response_mime_type: "text/plain",
 };
 
@@ -20,7 +20,7 @@ async function fetchGenerativeContent(text, ticketBoard) {
   const prompt = `As a project management master, update existing tasks and add new tasks on the ticket progress board: ${ticketSummary} by analyzing and summarizing the following conversation: ${text}. You can ignore tasks marked as done. Keep JSON format like this "
   [
     {
-      "channel": "[channel name]",
+      "channel": "[con or des or eng]",
       "task_id": "[assign one for new tasks using both letter and number]",
       "task_content": "[Content]",
       "status": "[To Do/In Progress/Done]",
@@ -38,7 +38,8 @@ async function fetchGenerativeContent(text, ticketBoard) {
     // This part is constructed with the complete prompt
     const parts = [{ text: prompt }]; // Changed to use the constructed prompt
 
-    console.log("Sending to model:", parts); // Verify what is sent to the model
+    console.log("Sending to model."); 
+    // console.log("Sending to model:", parts); // Verify what is sent to the model
 
     const model = genAI.getGenerativeModel({
       model: "gemini-1.5-pro-latest",
@@ -61,20 +62,19 @@ async function fetchGenerativeContent(text, ticketBoard) {
 
     const response = await result.response;
     // to do: rerun if undefined
-    if (response.candidates[0].content.parts == undefined) {
-      console.warn(`Response was undefined, retrying...`);
-      const result = await model.generateContent({
-        contents: [{ role: "user", parts }], // Send the correct parts to the content generation
-      });
+    // if (response.candidates[0].content.parts == undefined) {
+    //   console.warn(`Response was undefined, retrying...`);
+    //   const result = await model.generateContent({
+    //     contents: [{ role: "user", parts }], // Send the correct parts to the content generation
+    //   });
   
-      if (result.response.promptFeedback && result.response.promptFeedback.blockReason) {
-        return {
-          error: `Blocked for ${result.response.promptFeedback.blockReason}`,
-        };
-      }
-    }
-
-    console.log("Received Response: ", response.candidates[0].content.parts[0].text)
+    //   if (result.response.promptFeedback && result.response.promptFeedback.blockReason) {
+    //     return {
+    //       error: `Blocked for ${result.response.promptFeedback.blockReason}`,
+    //     };
+    //   }
+    // }
+    console.log("Received Response parts: ", response.candidates[0].content);
     const parsedResponse = parseJSONFromText(response.candidates[0].content.parts[0].text);
     
     return parsedResponse;
