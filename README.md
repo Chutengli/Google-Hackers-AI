@@ -4,7 +4,7 @@ Concerto is a task management plugin that leverages chat history from various wo
 
 ## Getting Started
 
-Concerto uses GetStream for chat UI and storage services, and NodeJS for listening/sending to chat content and fetching the Gemini API.
+Concerto uses GetStream for chat UI and storage services, and NodeJS for listening/sending to chat content and fetching the Gemini API. The NodeJS server using the information from AI to update a task management board in Google Sheet(in the future, this could be Jira, Github Project, etc.)
 
 ### Prerequisites
 
